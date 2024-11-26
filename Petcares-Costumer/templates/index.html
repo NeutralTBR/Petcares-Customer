@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Register & Login Form</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<div class="wrapper">
+  <div class="title-text">
+    <div class="title login">Login Form</div>
+    <div class="title signup">Signup Form</div>
+  </div>
+  <div class="form-container">
+    <div class="slide-controls">
+      <input type="radio" name="slide" id="login" checked>
+      <input type="radio" name="slide" id="signup">
+      <label for="login" class="slide login" onclick="showLoginForm()">Login</label>
+      <label for="signup" class="slide signup" onclick="showSignupForm()">Signup</label>
+      <div class="slider-tab"></div>
+    </div>
+    <div class="form-inner">
+      <form action="/index" method="post" class="login" id="loginForm">
+        <div class="field">
+          <input type="text" id="loginEmail" name="email" placeholder="Email Address" required>
+        </div>
+        <div class="field">
+          <input type="password" id="loginPassword" name="password" placeholder="Password" required>
+        </div>
+        <div class="pass-link"><a href="#">Forgot password?</a></div>
+        <div class="field btn">
+          <div class="btn-layer"></div>
+          <input type="submit" value="Login">
+        </div>
+        <div class="signup-link">Not a member? <a href="#" onclick="showSignupForm()">Signup now</a></div>
+      </form>
+      <form action="/register" method="post" class="signup" id="signupForm" style="display:none;">
+        <div class="field">
+          <input type="text" id="signupEmail" name="email" placeholder="Email" required>
+        </div>
+        <div class="field">
+          <input type="text" id="signupFirstname" name="firstName" placeholder="First-Name" required>
+        </div>
+        <div class="field">
+          <input type="text" id="signupLastname" name="lastName" placeholder="Last-Name" required>
+        </div>
+        <div class="field">
+          <input type="text" id="signupPhone" name="phone" placeholder="Phone" required>
+        </div>
+        <div class="field">
+          <input type="password" id="signupPassword" name="password" placeholder="Password" required>
+        </div>
+        <div class="field btn">
+          <div class="btn-layer"></div>
+          <input type="submit" value="Signup">
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<script>
+  function showLoginForm() {
+    document.getElementById('loginForm').style.display = 'block';
+    document.getElementById('signupForm').style.display = 'none';
+  }
+
+  function showSignupForm() {
+    document.getElementById('loginForm').style.display = 'none';
+    document.getElementById('signupForm').style.display = 'block';
+  }
+</script>
+</body>
+</html>
