@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animal Profile</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .profile-container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            max-width: 600px;
+            width: 100%;
+        }
+        .profile-container h1 {
+            margin-bottom: 20px;
+        }
+        .animal-list {
+            text-align: left;
+            margin-bottom: 20px;
+        }
+        .animal-item {
+            margin-bottom: 10px;
+        }
+        .animal-item span {
+            display: inline-block;
+            width: 150px;
+        }
+        .profile-container button {
+            width: 80%;
+            padding: 10px;
+            margin: 10px 0;
+            background-color: #5cb85c;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="profile-container">
+        <h1>Animals for Customer {{.CustomerID}}</h1>
+        <div class="animal-list">
+            {{range .Animals}}
+            <div class="animal-item">
+                <span><strong>Name:</strong> {{.AnimalName}}</span>
+                <span><strong>Species:</strong> {{.Species}}</span>
+                <span><strong>Age:</strong> {{.Age}}</span>
+                <span><strong>Gender:</strong> {{.Gender}}</span>
+                <button onclick="window.location.href='/edit_animal/{{$.CustomerID}}/{{.AnimalID}}'">Edit</button>
+                <button onclick="window.location.href='/delete_animal/{{$.CustomerID}}/{{.AnimalID}}'">Delete</button>
+            </div>
+            {{end}}
+        </div>
+        <button onclick="window.location.href='/add_animal/{{.CustomerID}}'">Add Animal</button>
+        <button onclick="window.location.href='/dashboard/{{$.CustomerID}}'">Back to Profile</button>
+    </div>
+</body>
+</html>

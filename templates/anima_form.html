@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Animal Form</title>
+</head>
+<body>
+    <h1>{{if .Animal.AnimalID}}Edit Animal{{else}}New Animal{{end}}</h1>
+    <form id="animal-form" action="{{if .Animal.AnimalID}}/animals/update{{else}}/animals/create{{end}}" method="post">
+        <input type="hidden" name="AnimalID" value="{{.Animal.AnimalID}}">
+        <label for="CustomerID">Customer:</label>
+        <select id="CustomerID" name="CustomerID">
+            {{range .Customers}}
+            <option value="{{.CustomerID}}" {{if eq .CustomerID $.Animal.CustomerID}}selected{{end}}>{{.FirstName}} {{.LastName}}</option>
+            {{end}}
+        </select><br><br>
+        <label for="AnimalName">Animal Name:</label>
+        <input type="text" id="AnimalName" name="AnimalName" value="{{.Animal.AnimalName}}" required><br><br>
+        <label for="Species">Species:</label>
+        <select id="Species" name="Species" {{if .Animal.AnimalID}}disabled{{end}} required>
+            <option value="dog" {{if eq .Animal.Species "Kucing"}}selected{{end}}>Dog</option>
+            <option value="cat" {{if eq .Animal.Species "Anjing"}}selected{{end}}>Cat</option>
+        </select><br><br>
+        <label for="Age">Age:</label>
+        <input type="number" id="Age" name="Age" value="{{.Animal.Age}}" required><br><br>
+        <label for="Gender">Gender:</label>
+        <input type="text" id="Gender" name="Gender" value="{{.Animal.Gender}}" required><br><br>
+        <input type="submit" value="{{if .Animal.AnimalID}}Update{{else}}Create{{end}}">
+    </form>
+    <a href="/animals">Back to Animals List</a>
+</body>
+</html>

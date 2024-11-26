@@ -1,0 +1,69 @@
+<!-- templates/edit_profile.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Profile</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .profile-container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 300px;
+        }
+        .profile-container h1 {
+            margin-bottom: 10px;
+        }
+        .profile-container input[type="text"], 
+        .profile-container input[type="email"],
+        .profile-container input[type="tel"] {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        .profile-container button {
+            width: 80%;
+            padding: 10px;
+            margin: 10px 0;
+            background-color: #5cb85c;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="profile-container">
+        <h1>Edit Profile</h1>
+        <form method="post">
+            <label for="first_name">First Name:</label><br>
+            <input type="text" id="first_name" name="first_name" value="{{ .Customer.FirstName }}" required><br>
+            <label for="last_name">Last Name:</label><br>
+            <input type="text" id="last_name" name="last_name" value="{{ .Customer.LastName }}" required><br>
+            <label for="email">Email:</label><br>
+            <input type="email" id="email" name="email" value="{{ .Customer.Email }}" required><br>
+            <label for="phone">Phone:</label><br>
+            <input type="tel" id="phone" name="phone" value="{{ .Customer.Phone }}" required><br><br>
+            <button type="submit">Save Changes</button>
+        </form>
+    </div>
+</body>
+</html>
